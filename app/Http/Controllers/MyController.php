@@ -78,7 +78,10 @@ class MyController extends Controller
      */
     public function edit($id)
     {
-        //
+      $categories = Category::all();
+      $post = Post::findOrFail($id);
+
+        return view('edit-post', compact('categories', 'post'));
     }
 
     /**
@@ -90,7 +93,13 @@ class MyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $validatedData = $request -> validate([
+        'title' => 'required',
+        'text' => 'required',
+        'category_id' => 'required'
+      ]);
+      Post::whereId($id) -> update($validatedData);
+      return redirect('/');
     }
 
     /**
@@ -101,6 +110,7 @@ class MyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id) -> delete();
+        return redirect('/');
     }
 }
