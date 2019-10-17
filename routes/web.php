@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'MyController@index')->name('home-page');
+Route::get('/category/{id}', 'MyController@showCategory') -> name('categories');

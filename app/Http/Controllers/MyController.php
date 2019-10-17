@@ -18,6 +18,12 @@ class MyController extends Controller
         $posts = Post::orderBy('updated_at', 'DESC')->take(5)->get();
         return view('home-page', compact('posts'));
     }
+    public function showCategory($id)
+    {
+        $category = Category::findOrFail($id);
+
+        return view('categories', compact('category'));
+    }
 
     /**
      * Show the form for creating a new resource.
