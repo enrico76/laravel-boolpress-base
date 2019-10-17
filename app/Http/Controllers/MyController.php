@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\Category;
 
 class MyController extends Controller
 {
@@ -13,7 +15,8 @@ class MyController extends Controller
      */
     public function index()
     {
-        return view('home-page');
+        $posts = Post::orderBy('updated_at', 'DESC')->take(5)->get();
+        return view('home-page', compact('posts'));
     }
 
     /**
