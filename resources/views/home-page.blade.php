@@ -2,6 +2,8 @@
 
 @section('content')
 
+  <a href="{{Route('create.post')}}">Crea un post</a>
+
   @foreach ($posts as $post)
 
 

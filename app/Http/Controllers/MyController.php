@@ -38,7 +38,8 @@ class MyController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('create-post', compact('categories'));
     }
 
     /**
@@ -49,7 +50,13 @@ class MyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request -> validate([
+          'title' => 'required',
+          'text' => 'required',
+          'category_id' => 'required'
+        ]);
+        Post::create($validatedData);
+        return redirect('/');
     }
 
     /**
