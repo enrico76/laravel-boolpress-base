@@ -13,3 +13,4 @@
 
 Route::get('/', 'MyController@index')->name('home-page');
 Route::get('/category/{id}', 'MyController@showCategory') -> name('categories');
+Route::get('/post/{id}', 'MyController@showPost') -> name('posts');

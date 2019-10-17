@@ -24,6 +24,12 @@ class MyController extends Controller
 
         return view('categories', compact('category'));
     }
+    public function showPost($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return view('post', compact('post'));
+    }
 
     /**
      * Show the form for creating a new resource.
